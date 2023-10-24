@@ -163,7 +163,7 @@ def main():
     """Main function that houses the structure and logic of the program."""
     
     player_choice = input("\nStart -> 1\nRules -> 2\nExit -> 3   ")
-    if player_choice == "1": #Creación del tablero
+    if player_choice == "1":
         board = board_generator()
         printer(board)
         while True:
