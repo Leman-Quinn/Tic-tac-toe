@@ -7,7 +7,7 @@ Q = 3
 
 def rules():
     """Shows the rules."""
-
+    
     print("\nThe goal of the game is to line up 3(three) X marks in a row")
     sleep(1)
     print("\nIt can be horizontally, vertically or diagonally.")
@@ -19,7 +19,6 @@ def close():
     """Exits the program after entering any key."""
 
     while True:
-
         exit_keyword=input("\nEnter any key to exit:   ")
         if exit_keyword!="":
             exit()
@@ -29,18 +28,14 @@ def printer(board):
     """Formats and displays the board."""
 
     for row in range(Q):
-
         for column in range(Q):
-
             if column == (Q - 1):
                 mark = board[row][column]
                 print(f"{mark:^3}", end = " ")
             else:
                 mark = board[row][column]
                 print(f"{mark:^3} |", end=" ")
-
         print(" ")
-
         if row != (Q - 1):
             print("-" * (Q * 5))
 
@@ -80,7 +75,6 @@ def npc_turn(board):
     """What happens during the NPC's turn."""
 
     while True:
-
         rows = range(Q)
         columns = range(Q)
         npc_row = random.choice(rows)
@@ -96,24 +90,16 @@ def check_for_rows(board):
     """Checks for a win in every row."""
 
     for row in range(Q):
-
         cross_counter = 0
         circle_counter = 0
-
         for column in range(Q):
-
             if board[row][column] == "X":
-                    
                     cross_counter += 1
-
                     if cross_counter == 3:
                         print("You won!!")
-
                         close()
             elif board[row][column] == "O":
-                    
                     circle_counter += 1
-
                     if circle_counter == 3:
                         print("You lost!!")
                         close()
@@ -123,23 +109,16 @@ def check_for_columns(board):
     """Checks for a win in every column."""
 
     for column in range(Q):
-
         cross_counter = 0
         circle_counter = 0
-
         for row in range(Q):
-
-            if board[row][column] == "X":
-                    
+            if board[row][column] == "X":       
                     cross_counter += 1
-
                     if cross_counter == 3:
                         print("You won!!")
                         close()
             elif board[row][column] == "O":
-                    
                     circle_counter += 1
-
                     if circle_counter == 3:
                         print("You lost!!")
                         close()
@@ -147,11 +126,9 @@ def check_for_columns(board):
 
 def check_for_diagonals(board):
     if (board[0][0] == "X" and board[1][1] == "X" and board[2][2] == "X") or (board[2][0] == "X" and board[1][1] == "X" and board[0][2] == "X"):
-
         print("You won!!")
         close()
     elif (board[0][0] == "O" and board[1][1] == "O" and board[2][2] == "O") or (board[2][0] == "X" and board[1][1] == "X" and board[0][2] == "O"):
-
         print("You lost!!")
         close()
 
@@ -160,53 +137,37 @@ def check_for_draw(board):
     """Checks for a draw."""
 
     used_slots=0
-
     for row in range(Q):
-
         for column in range(Q):
-
-            if board[row][column] == "X" or board[row][column] == "O":
-                    
+            if board[row][column] == "X" or board[row][column] == "O":     
                     used_slots += 1
-
+                
     if used_slots == (Q ** 2):
-
         print("It's a draw!!")
         close()
 
 
 def board_generator():
     """Generates the playing board(dynamic)."""
-
-    board=[]
-
-    for row in range(Q):
     
+    board=[]
+    for row in range(Q):
         row=[]
-
         for column in range(Q):
-
             row.append("")
-
         board.append(row)
-
     return board
 
 
 def main():
     """Main function that houses the structure and logic of the program."""
-
+    
     player_choice = input("\nStart -> 1\nRules -> 2\nExit -> 3   ")
-
     if player_choice == "1": #Creación del tablero
-
         board = board_generator()
         printer(board)
-
         while True:
-
             move=input("\nRules -> 2\nExit -> 3\nRows: A, B, C\nColumns: 1, 2, 3\nEnter row & column:   ")
-
             if move=="2":
                 rules()
             elif move=="3":
