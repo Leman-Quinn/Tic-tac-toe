@@ -20,7 +20,7 @@ def close():
 
     while True:
         exit_keyword=input("\nEnter any key to exit:   ")
-        if exit_keyword!="":
+        if exit_keyword != "":
             exit()
 
 
@@ -167,10 +167,10 @@ def main():
         board = board_generator()
         printer(board)
         while True:
-            move=input("\nRules -> 2\nExit -> 3\nRows: A, B, C\nColumns: 1, 2, 3\nEnter row & column:   ")
-            if move=="2":
+            move = input("\nRules -> 2\nExit -> 3\nRows: A, B, C\nColumns: 1, 2, 3\nEnter row & column:   ")
+            if move == "2":
                 rules()
-            elif move=="3":
+            elif move == "3":
                 close()
             else:
                 pc_turn(board, move)
@@ -185,9 +185,9 @@ def main():
                 check_for_columns(board)
                 check_for_diagonals(board)
                 check_for_draw(board)
-    elif player_choice=="2":
+    elif player_choice == "2":
         rules()
-    elif player_choice=="3":
+    elif player_choice == "3":
         close()
 
 main()
